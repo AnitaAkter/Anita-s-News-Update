@@ -23,12 +23,12 @@ const categoryList = (lists) => {
 //..........Thumbnail's Js.........// 
 
 const thumbnailDetails = (category_id) => {
-    spinnerLoading(true)
+    spinnerLoad(true)
 
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
         .then(res => res.json())
         .then((data) => {
-            spinnerLoading(false)
+            spinnerLoad(false)
             let localData = data.data
 
             localData.sort((a, b) => b.total_view - a.total_view)
@@ -37,13 +37,13 @@ const thumbnailDetails = (category_id) => {
             allThumbnailDetails(localData);
         })
         .catch((error) => {
-            spinnerLoading(false)
+            spinnerLoad(false)
             console.log(error)
         })
 }
 
-
-const spinnerLoading = isLoading => {
+// .......Spinner's Js.....//
+const spinnerLoad = isLoading => {
     const spinner = document.getElementById("spinner");
     if (isLoading) {
         spinner.classList.remove('d-none')
@@ -83,11 +83,11 @@ const allThumbnailDetails = (allInfo) => {
             <p class="card-text">${details.length > 100 ? details.slice(0, 100) + '...' : details}</p>
             <div class="card-footer mt-5">
             <small class=" d-flex">
-            <div class="container">
+            <div class="container mt-3">
               <div class="row">
                   <div class="col">
                   <div class="d-flex">
-                      <img src="${img}" class="rounded" alt="..." style="width: 30px; height: 30px; ">
+                      <img src="${img}" class="rounded-circle" alt="..." style="width: 30px; height: 30px; ">
                       <p>${name.length > 6 ? name.slice(0, 6) + '...' : name}</p>
                       </div>
                    </div>
@@ -104,14 +104,14 @@ const allThumbnailDetails = (allInfo) => {
           </div>
             </small>
             </div>
-  
+
           </div>
         </div>
       </div>
     </div>
       `
         thumbnailDetails.appendChild(createDiv);
-        spinnerLoading(false);
+        spinnerLoad(false);
     }
     )
 }
