@@ -11,7 +11,7 @@ const categoryList = (lists) => {
         const { category_name, category_id } = list;
         const createLi = document.createElement('li');
         createLi.innerHTML = `
-          <li class="bg-secondary  px-3 py-3 me-3 rounded">
+          <li class="bg-secondary border border-dark px-3 py-3 me-3 rounded">
           <a class="active text-white  fs-5 text" aria-current="page" onclick="thumbnailDetails('${category_id}')" href="#" style="text-decoration:none">${category_name}</a>
           </li>
           `
