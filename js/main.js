@@ -19,4 +19,8 @@ const categoryList = (lists) => {
     }
     )
 }
+
+
+
+
 allCategories();
