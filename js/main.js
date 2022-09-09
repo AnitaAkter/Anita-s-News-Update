@@ -117,7 +117,7 @@ const allThumbnailDetails = (allInfo) => {
 const writerDetails = (writerId) => {
     const url = `https://openapi.programming-hero.com/api/news/${writerId}`
     fetch(url)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(modalData => postModalOfWriter(modalData.data))
 
         .catch((error) => console.log(error));
